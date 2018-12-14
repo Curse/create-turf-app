@@ -22,9 +22,9 @@ if (argv.params.length > 0) {
 const djangoAppName = path.dirname(path.dirname(destDir)).split(path.sep).pop()
 
 try {
-    console.log(``)
-    console.log(`Generating configs for ${appName}...`)
-    console.log('')
+    console.log(`
+    Generating configs for ${appName}...
+    `)
 
     if (!fs.existsSync(destDir)) {
         fs.mkdirSync(destDir)
@@ -56,20 +56,19 @@ try {
         filter: (src, dest) => !ignoreInCopy.includes(src.split(path.sep).pop())
     })
 
-    console.log(``)
-    console.log(chalk.green('Default configs written to root directory.'))
-    console.log('Please note that files are not overwritten.')
-    console.log('if you have existing configs you want to replace, you will need to delete them, and run again')
-    console.log('')
-    console.log('#############')
-    console.log(`To begin:`)
-    console.log(``)
-    if (destDir !== process.cwd()) {
-        console.log(`cd ${appName}`)
-    }
-    console.log(`npm install`)
-    console.log(`npm run watch`)
+    console.log(`
+    ${chalk.green('Default configs written to root directory.')}
+    Please note that files are not overwritten.
+    if you have existing configs you want to replace, you will need to delete them, and run again
+    or manually update them with additional configs from create-turf-app
+    
+    #############
+    To begin:
+    
+    cd ${appName}
+    npm install
+    npm run watch`)
 } catch (err) {
     console.log(chalk.red('Problem generating configs'))
-    console.log(err)
+    console.log(chalk.red(err))
 }

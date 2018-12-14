@@ -12,6 +12,10 @@ module.exports = ({
   basePath = process.cwd(),
   distPath = 'dist',
   publicPath = '/static/dist',
+  statsFile = {
+    path: '/static/dist',
+    fileName: 'webpack-stats.json'
+  },
   overrides = {}
 }) => (env, argv) => {
 
@@ -94,7 +98,7 @@ module.exports = ({
         sourceMap: devMode,
       }),
       new BundleTracker({
-        filename: path.join(basePath, distPath, 'webpack-stats.json')
+        filename: path.join(statsFile.path, statsFile.fileName)
       }),
       new CleanWebpackPlugin([path.join(basePath, distPath, '*')], {
         allowExternal: true

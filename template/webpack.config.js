@@ -7,6 +7,10 @@ module.exports = createTurfApp.makeWebpackConfig({
   entry: './main.js',
   distPath: '../../static/<%= djangoApp %>/<%= name %>/',
   publicPath: '/static/<%= djangoApp %>/<%= name %>/',
+  statsFile: {
+    path: '../../static/<%= djangoApp %>/<%= name %>/',
+    fileName: 'webpack-stats.json',
+  },
   overrides: {
     // regular webpack.config.js object
     // these will be merged with the base config
