@@ -74,7 +74,7 @@ At your project level `webpack.config.js`
         // Default values shown
         entry = './main.js',
         distPath: '../static/[your-app-name]/dist',
-        publicPath: '/static/[your-app-name]/dist',
+        publicPath: '[your-app-name]/dist',
         overrides = {
             // these will be merged with the base config
         }
