@@ -14,14 +14,13 @@ module.exports = ({
   publicPath = '/static/dist',
   statsFile = {
     path: '/static/dist',
-    fileName: 'webpack-stats.json'
+    fileName: 'webpack-stats.json',
   },
-  overrides = {}
+  overrides = {},
 }) => (env, argv) => {
-
   const devMode = argv.mode === 'development'
   const baseConfig = {
-    entry: entry,
+    entry,
     output: {
       filename: devMode ? 'js/[name].js' : 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
@@ -29,7 +28,8 @@ module.exports = ({
       publicPath: `${publicPath}`,
     },
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
@@ -46,21 +46,15 @@ module.exports = ({
           use: [
             devMode ? {
               loader: 'style-loader',
-              options: {
-                sourceMap: true
-              },
+              options: { sourceMap: true },
             } : MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
-              options: {
-                sourceMap: devMode
-              },
+              options: { sourceMap: devMode },
             },
             {
               loader: 'postcss-loader',
-              options: {
-                sourceMap: devMode
-              },
+              options: { sourceMap: devMode },
             },
             {
               loader: 'sass-loader',
@@ -73,39 +67,47 @@ module.exports = ({
           ],
         },
         {
-          test: /\.(png|woff|woff2|svg|eot|ttf|gif|jpe?g)$/,
-          use: [{
-            loader: 'url-loader',
-            options: {
-              limit: 1000,
-              // ManifestStaticFilesStorage reuse.
-              name: devMode ? 'img/[name].[ext]' : 'img/[name]-[hash].[ext]',
+          test: /\.(png|svg|gif|jpe?g)$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 1000,
+                // ManifestStaticFilesStorage reuse.
+                name: devMode ? 'img/[name].[ext]' : 'img/[name]-[contenthash].[ext]',
+              },
             },
-          }, ],
+          ],
+        },
+        {
+          test: /\.(woff2?|eot|ttf)$/,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 1000,
+                // ManifestStaticFilesStorage reuse.
+                name: devMode ? 'font/[name].[ext]' : 'font/[name]-[contenthash].[ext]',
+              },
+            },
+          ],
         },
       ],
     },
     resolve: {
       modules: ['node_modules', '../'],
-      extensions: [
-        '.js',
-        '.jsx',
-      ],
+      extensions: ['.js', '.jsx'],
     },
     plugins: [
       new MiniCssExtractPlugin({
         filename: devMode ? 'css/[name].css' : 'css/[name].[contenthash].css',
         sourceMap: devMode,
       }),
-      new BundleTracker({
-        filename: path.join(statsFile.path, statsFile.fileName)
-      }),
-      new CleanWebpackPlugin([path.join(basePath, distPath, '*')], {
-        allowExternal: true
-      }),
+      new BundleTracker({ filename: path.join(statsFile.path, statsFile.fileName) }),
+      new CleanWebpackPlugin([path.join(basePath, distPath, '*')], { allowExternal: true }),
     ],
     devtool: devMode ? 'inline-source-map' : '',
   }
 
-  return merge(baseConfig, overrides);
+  return merge(baseConfig, overrides)
 }
