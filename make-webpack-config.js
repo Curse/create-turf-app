@@ -37,7 +37,11 @@ module.exports = ({
             // .babelrc config was causing issues with imported js from other package directories
             options: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-transform-runtime'],
+              plugins: [
+                'babel-plugin-styled-components',
+                '@babel/plugin-proposal-class-properties',
+                '@babel/plugin-transform-runtime',
+              ],
             },
           },
         },
