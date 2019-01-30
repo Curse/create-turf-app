@@ -5,7 +5,7 @@ const BundleTracker = require('webpack-bundle-tracker')
 const jsonImporter = require('node-sass-json-importer')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const merge = require('webpack-merge')
-
+const polyfills = ['@babel/polyfill']
 
 module.exports = ({
   entry = './main.js',
@@ -20,7 +20,7 @@ module.exports = ({
 }) => (env, argv) => {
   const devMode = argv.mode === 'development'
   const baseConfig = {
-    entry,
+    entry: [...polyfills, entry],
     output: {
       filename: devMode ? 'js/[name].js' : 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
@@ -39,6 +39,7 @@ module.exports = ({
               presets: ['@babel/preset-env', '@babel/preset-react'],
               plugins: [
                 'babel-plugin-styled-components',
+                '@babel/plugin-syntax-dynamic-import',
                 '@babel/plugin-proposal-class-properties',
                 '@babel/plugin-transform-runtime',
               ],
