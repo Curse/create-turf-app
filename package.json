@@ -1,6 +1,6 @@
 {
   "name": "@turf/create-turf-app",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Base build configs for sports team projects.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "publishConfig": {
-    "registry": "https://npm.curse.us"
+    "registry": "http://npm-server-1126693473.us-east-2.elb.amazonaws.com"
   },
   "main": "index.js",
   "bin": {
@@ -26,7 +26,7 @@
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.2.0",
-    "@node/eslintrc": "^1.0.3",
+    "@node/eslintrc": "^1.0.4",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
