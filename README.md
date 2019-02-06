@@ -1,6 +1,6 @@
 # @turf/create-turf-app
 
-[Internal NPM Link](http://npm.curse.us/#/detail/@turf/create-turf-app)
+[Internal NPM Link](https://npm.curse.us/#/detail/@turf/create-turf-app)
 
 Base build configs for sports team front-end apps within the default django workflow.
 
@@ -43,10 +43,10 @@ At your project level `.npmrc`
 
 ```
 ; Set a new registry for a scoped package
-@node:registry=http://npm.curse.us
-@turf:registry=http://npm.curse.us
-@muthead:registry=http://npm.curse.us
-@futhead:registry=http://npm.curse.us
+@node:registry=https://npm.curse.us
+@turf:registry=https://npm.curse.us
+@muthead:registry=https://npm.curse.us
+@futhead:registry=https://npm.curse.us
 ```
 
 ## ESLint
