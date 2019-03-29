@@ -1,6 +1,6 @@
 {
   "name": "@turf/create-turf-app",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Base build configs for sports team projects.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -48,6 +48,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.4.0",
+    "resolve-url-loader": "^3.0.1",
     "sass": "^1.15.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

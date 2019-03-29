@@ -62,11 +62,14 @@ module.exports = ({
               options: { sourceMap: devMode },
             },
             {
+              loader: 'resolve-url-loader',
+              options: { sourceMap: devMode },
+            },
+            {
               loader: 'sass-loader',
               options: {
-                sourceMap: devMode,
+                sourceMap: true, // required for resolve-url-loader
                 importer: jsonImporter(),
-                includePaths: ['node_modules', '../'],
               },
             },
           ],
