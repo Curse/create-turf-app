@@ -103,6 +103,7 @@ module.exports = ({
       ],
     },
     resolve: {
+      mainFields: ['esnext', 'main'],
       modules: ['node_modules', '../'],
       extensions: ['.js', '.jsx'],
     },
