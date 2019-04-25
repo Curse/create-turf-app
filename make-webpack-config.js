@@ -104,8 +104,15 @@ module.exports = ({
     },
     resolve: {
       mainFields: ['esnext', 'main'],
-      modules: ['node_modules', '../'],
+      modules: ['node_modules'],
       extensions: ['.js', '.jsx'],
+      // These are important when you're running npm link on dependencies
+      symlinks: false,
+      alias: {
+        'styled-components': path.resolve(process.cwd(), 'node_modules', 'styled-components'),
+        'react': path.resolve(process.cwd(), 'node_modules', 'react'),
+        'react-dom': path.resolve(process.cwd(), 'node_modules', 'react-dom'),
+      }
     },
     plugins: [
       new MiniCssExtractPlugin({
@@ -116,8 +123,6 @@ module.exports = ({
       new CleanWebpackPlugin([path.join(basePath, distPath, '*')], { allowExternal: true }),
     ],
     devtool: devMode ? 'inline-source-map' : '',
-    // necessary for npm linked packages to resolve dependencies correctly
-    symlinks: false,
   }
 
   return merge(baseConfig, overrides)
