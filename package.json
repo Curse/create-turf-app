@@ -1,6 +1,6 @@
 {
   "name": "@turf/create-turf-app",
-  "version": "0.2.1",
+  "version": "0.2.1-canary.0",
   "description": "Base build configs for sports team projects.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
