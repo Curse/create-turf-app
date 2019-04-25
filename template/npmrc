@@ -1,2 +1,2 @@
 ; Set a new registry for a scoped package
-@turf:registry=https://www.myget.org/F/turf/auth/647678a9-2bca-46d8-878b-ca6ecced93d9/npm/
+@turf:registry=https://www.myget.org/F/turf/auth/45a7bbce-8f92-4385-9041-9d1f42aec5b8/npm/
