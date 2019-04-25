@@ -116,6 +116,8 @@ module.exports = ({
       new CleanWebpackPlugin([path.join(basePath, distPath, '*')], { allowExternal: true }),
     ],
     devtool: devMode ? 'inline-source-map' : '',
+    // necessary for npm linked packages to resolve dependencies correctly
+    symlinks: false,
   }
 
   return merge(baseConfig, overrides)
