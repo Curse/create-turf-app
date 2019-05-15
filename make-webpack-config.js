@@ -104,7 +104,7 @@ module.exports = ({
     },
     resolve: {
       mainFields: ['esnext', 'main'],
-      modules: ['node_modules'],
+      modules: ['node_modules', '../'],
       extensions: ['.js', '.jsx'],
       // These are important when you're running npm link on dependencies
       symlinks: false,

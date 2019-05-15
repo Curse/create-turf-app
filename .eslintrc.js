@@ -6,6 +6,10 @@ module.exports = {
     'plugin:react/recommended'
   ],
   parser: 'babel-eslint',
+  "env" : {
+    "browser": true,
+    "node": true,
+  },
   rules: {
     // use ASI instead of ending each line with a semicolon
     'semi': ['warn', 'never'],
