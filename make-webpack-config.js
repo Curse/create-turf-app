@@ -11,6 +11,7 @@ module.exports = ({
   entry = './main.js',
   basePath = process.cwd(),
   distPath = 'dist',
+  cdnRoot = '',
   publicPath = '/static/dist',
   statsFile = {
     path: '/static/dist',
@@ -25,7 +26,7 @@ module.exports = ({
       filename: devMode ? 'js/[name].js' : 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
       path: path.resolve(basePath, distPath),
-      publicPath: `${publicPath}`,
+      publicPath: devMode ? publicPath : `${cdnRoot}${publicPath}`,
     },
     module: {
       rules: [
