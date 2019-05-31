@@ -20,14 +20,14 @@ module.exports = ({
   overrides = {},
 }) => (env, argv) => {
   const devMode = argv.mode === 'development'
-  const isLocal = argv.env === 'local'
+  const isProd = argv.env === 'prod'
   const baseConfig = {
     entry: [...polyfills, entry],
     output: {
       filename: devMode ? 'js/[name].js' : 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
       path: path.resolve(basePath, distPath),
-      publicPath: devMode || isLocal ? publicPath : `${cdnRoot}${publicPath}`,
+      publicPath: devMode || !isProd ? publicPath : `${cdnRoot}${publicPath}`,
     },
     module: {
       rules: [
