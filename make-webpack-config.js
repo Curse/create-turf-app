@@ -11,7 +11,6 @@ module.exports = ({
   entry = './main.js',
   basePath = process.cwd(),
   distPath = 'dist',
-  cdnRoot = '',
   publicPath = '/static/dist',
   statsFile = {
     path: '/static/dist',
@@ -20,14 +19,13 @@ module.exports = ({
   overrides = {},
 }) => (env, argv) => {
   const devMode = argv.mode === 'development'
-  const isProd = argv.env === 'prod'
   const baseConfig = {
     entry: [...polyfills, entry],
     output: {
       filename: devMode ? 'js/[name].js' : 'js/[name].[contenthash].js',
       chunkFilename: 'js/[name].[contenthash].js',
       path: path.resolve(basePath, distPath),
-      publicPath: devMode || !isProd ? publicPath : `${cdnRoot}${publicPath}`,
+      publicPath: devMode || !env.cdnRoot ? publicPath : `${env.cdnRoot}${publicPath}`,
     },
     module: {
       rules: [
